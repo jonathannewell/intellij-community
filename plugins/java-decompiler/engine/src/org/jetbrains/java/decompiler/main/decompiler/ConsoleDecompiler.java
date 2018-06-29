@@ -65,8 +65,12 @@ public class ConsoleDecompiler implements IBytecodeProvider, IResultSaver {
 
     File destination = new File(args[args.length - 1]);
     if (!destination.isDirectory()) {
-      System.out.println("error: destination '" + destination + "' is not a directory");
-      return;
+      if (!destination.exists()) {
+        destination.mkdir();
+      } else {
+        System.out.println("error: destination '" + destination + "' is not a directory");
+        return;
+      }
     }
 
     PrintStreamLogger logger = new PrintStreamLogger(System.out);

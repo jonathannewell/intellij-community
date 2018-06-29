@@ -81,7 +81,7 @@ public class StructContext {
 
       boolean isArchive = false;
       try {
-        if (filename.endsWith(".jar")) {
+        if (filename.endsWith(".jar") || filename.endsWith(".war") || filename.endsWith(".ear")) {
           isArchive = true;
           addArchive(path, file, ContextUnit.TYPE_JAR, isOwn);
         }
